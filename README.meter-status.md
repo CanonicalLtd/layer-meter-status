@@ -1,4 +1,4 @@
-# Metering Layer
+# Meter Status Layer
 
 This layer adds commercial charm meter status support.
 
@@ -12,9 +12,9 @@ includes:
  - layer:/path/to/meter-status
 ```
 
-## Metering Status
+## Meter Status
 
-The metering status feedback to your charm indicates whether it is operating
+The meter status feedback to your charm indicates whether it is operating
 within a user's established budget. The status code will be one of the
 following indicators:
 
