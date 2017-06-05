@@ -9,7 +9,7 @@ import sys
 sys.path.append(os.path.join(charm_dir, 'lib'))
 
 from charmhelpers.core.unitdata import kv
-from charms.reactive import set_state
+from charms.reactive import remove_state, set_state
 from charms.metering import CODE, INFO
 
 
@@ -17,6 +17,10 @@ if __name__ == '__main__':
     unit_data = kv()
     current = os.environ['JUJU_METER_STATUS']
     if current:
+        previous = unit_data.get(CODE)
+        if previous:
+            remove_state('meter.status.%s' % (previous))
+
         current = str(current).lower()
         unit_data.set(CODE, current)
         unit_data.set(INFO, os.environ.get('JUJU_METER_INFO'))
